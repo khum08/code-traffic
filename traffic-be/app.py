@@ -2,6 +2,9 @@ from flask import Flask, redirect, render_template, request, jsonify, send_from_
 
 app = Flask(__name__)
 
+@app.route('/test', methods=['GET'])
+def test():
+    return 'test'
 
 
 if __name__ == '__main__':
