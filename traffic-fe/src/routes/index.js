@@ -4,7 +4,10 @@ import {
 } from 'vue-router';
 
 import Home from '../pages/Home.vue';
-import About from '../pages/About.vue';
+import Detail from '../pages/Detail.vue';
+import LineChart from '../components/LineChart.vue';
+import TableChart from '../components/TableChart.vue';
+
 
 const routes = [
     {
@@ -13,9 +16,19 @@ const routes = [
         component: Home
     },
     {
-        path: '/about',
-        name: 'About',
-        component: About
+        path: '/detail',
+        name: 'Detail',
+        component: Detail
+    },
+    {
+        path: '/line-charts',
+        name: 'LineChart',
+        component: LineChart
+    },
+    {
+        path: '/table-charts',
+        name: 'TableChart',
+        component: TableChart
     }
 ];
 
