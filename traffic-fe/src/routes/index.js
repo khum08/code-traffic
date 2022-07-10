@@ -5,9 +5,11 @@ import {
 
 import Home from '../pages/Home.vue';
 import Detail from '../pages/Detail.vue';
+import Statistic from '../pages/Statistic.vue';
 import LineChart from '../components/LineChart.vue';
 import TableChart from '../components/TableChart.vue';
 import TrafficChart from '../components/Traffic.vue';
+
 
 
 const routes = [
@@ -35,6 +37,11 @@ const routes = [
         path: '/traffic-charts',
         name: 'Traffic',
         component: TrafficChart
+    },
+    {
+        path: '/statistic',
+        name: 'Statistic',
+        component: Statistic
     }
 ];
 

@@ -7,6 +7,10 @@
 import { ref } from 'vue';
 import ListView from '../components/ListView.vue';
 const viewsData = ref([
+    {
+        name: 'Traffic statistic',
+        to: '/statistic'
+    },
     { 
         name: 'line',
         to: '/line-charts'
