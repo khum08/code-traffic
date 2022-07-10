@@ -14,6 +14,10 @@ const viewsData = ref([
     { 
         name: 'table',
         to: '/table-charts'
+    },
+    {
+        name: 'traffic',
+        to: '/traffic-charts'
     }
 ]);
 </script>
