@@ -4,8 +4,38 @@
 </template>
 
 <script setup>
+
+
 import * as echarts from 'echarts';
 import {onMounted, ref} from 'vue';
+
+const data = [
+  {
+    name: "Car & Taxis",
+    probability: "-24.7%",
+  },
+  {
+    name: "Van",
+    probability: "-8.1%",
+  },
+  {
+    name: "Lorries",
+    probability: "-5.7%",
+  },
+  {
+    name: "Motorcycles",
+    probability: "-17.5%",
+  },
+  {
+    name: "Buses and Coaches",
+    probability: "-32.0%",
+  },
+  {
+    name: "Pedal Cycles",
+    probability: "45.7%",
+  },
+];
+
 const lineChart = ref(null);
 const colors = ['#5470C6', '#91CC75', '#EE6666'];
 let option = {

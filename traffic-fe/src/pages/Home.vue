@@ -11,6 +11,10 @@ const viewsData = ref([
         name: 'Traffic statistic',
         to: '/statistic'
     },
+    {
+        name: 'Main',
+        to: 'main'
+    },
     { 
         name: 'line',
         to: '/line-charts'

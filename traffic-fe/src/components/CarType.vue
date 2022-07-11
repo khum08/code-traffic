@@ -1,0 +1,94 @@
+<template>
+  <a-table :columns="columns" :data-source="data" :pagination="false">
+    <template #headerCell="{ column }">
+    </template>
+
+    <template #bodyCell="{ column, record }">
+      <template v-if="column.key === 'CarType'">
+        <a>
+          {{ record.name }}
+        </a>
+      </template>
+      <template v-else-if="column.key === 'probability'">
+        <a-statistic
+            :value="record.probability"
+            :precision="2"
+            suffix="%"
+            :value-style="{ color: record.probability > 0 ? '#3f8600': '#cf1322' }"
+            style="margin-right: 50px"
+          >
+            <template #prefix v-if="record.probability>0">
+              <arrow-up-outlined />
+            </template>
+            <template #prefix v-else-if="record.probability<=0">
+              <arrow-down-outlined />
+            </template>
+          </a-statistic>
+      </template>
+    </template>
+  </a-table>
+</template>
+<script>
+import { SmileOutlined, DownOutlined, ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons-vue";
+import { defineComponent } from "vue";
+const columns = [
+  {
+    title: "CarType",
+    dataIndex: "name",
+    key: "CarType",
+  },
+  {
+    title: "Probability",
+    dataIndex: "probability",
+    key: "probability",
+  },
+];
+
+const data = [
+  {
+    key: "1",
+    name: "Car & Taxis",
+    probability: "-24.7",
+  },
+  {
+    key: "2",
+    name: "Van",
+    probability: "-8.1",
+  },
+  {
+    key: "3",
+    name: "Lorries",
+    probability: "-5.7",
+  },
+  {
+    key: "4",
+    name: "Motorcycles",
+    probability: "-17.5",
+  },
+  {
+    key: "5",
+    name: "Buses and Coaches",
+    probability: "-32",
+  },
+  {
+    key: "6",
+    name: "Pedal Cycles",
+    probability: "45.7",
+  },
+];
+export default defineComponent({
+  components: {
+    SmileOutlined,
+    DownOutlined,
+    ArrowUpOutlined,
+    ArrowDownOutlined,
+  },
+
+  setup() {
+    return {
+      data,
+      columns,
+    };
+  },
+});
+</script>
