@@ -1,10 +1,10 @@
 # Project Desc.
 这是一个关于英国交通的项目。项目的结构上采用了前后端分离。
 其中：
-- traffic-fe:
+- traffic-fe: frontend
   是前端部分，使用vue
 
-- traffic-be:
+- traffic-be: backend
   是后端部分，使用flask
 
 ## Quick start
