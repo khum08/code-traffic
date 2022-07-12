@@ -1,5 +1,7 @@
 <template>
-  <a-table :columns="columns" :data-source="data" :pagination="false">
+  <a-table 
+  :bordered="true"
+  :columns="columns" :data-source="data" :pagination="false">
     <template #headerCell="{ column }">
     </template>
     <template #bodyCell="{ column, record }">

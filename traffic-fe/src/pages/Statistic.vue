@@ -1,7 +1,5 @@
 <template>
-    <div class="page">
-        <div class="title">Traffic Statistic</div>
-        
+    <div>        
         <selected></selected>
         <div class="content">
             <div class="left">
@@ -33,10 +31,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* .page {
-    width: 100vw;
-    height: 100vh;
-} */
 .title {
     text-align: center;
     font-size: 20px;
@@ -44,15 +38,12 @@ export default defineComponent({
 }
 .content {
     display: flex;
-    height: 80vh;
 }
 .left {
     flex: 1;
-    background-color: rgb(231, 157, 157);
 }
 
 .right {
     flex: 1;
-    background-color: aquamarine;
 }
 </style>

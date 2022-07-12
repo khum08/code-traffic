@@ -1,91 +1,79 @@
 <template>
-  <a-layout class="main">
-    <a-layout-sider
-      breakpoint="lg"
-      collapsed-width="0"
-      @collapse="onCollapse"
-      @breakpoint="onBreakpoint"
-    >
-      <div class="logo" />
-      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-        <a-menu-item key="1">
-          <user-outlined />
-          <span class="nav-text">Page 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <video-camera-outlined />
-          <span class="nav-text">Page 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <upload-outlined />
-          <span class="nav-text">Page 3</span>
-        </a-menu-item>
+  <a-layout class="layout">
+    <a-layout-header>
+      <span class="logo">Traffic Statistics</span>
+      <a-menu
+        v-model:selectedKeys="selectedKeys"
+        theme="dark"
+        mode="horizontal"
+        :style="{ lineHeight: '64px' }"
+      >
+        <a-menu-item key="1">nav 1</a-menu-item>
+        <a-menu-item key="2">nav 2</a-menu-item>
+        <a-menu-item key="3">nav 3</a-menu-item>
       </a-menu>
-    </a-layout-sider>
-    <a-layout>
-      <a-layout-header :style="{ background: '#fff', padding: 0 }" />
-      <a-layout-content :style="{ margin: '24px 16px 0' }">
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-            <statistic></statistic>
-        </div>
-      </a-layout-content>
-      <a-layout-footer style="text-align: center">
-        Traffic Statistics By ...
-      </a-layout-footer>
-    </a-layout>
+    </a-layout-header>
+    <a-layout-content style="padding: 0 20px">
+      <!-- <a-breadcrumb style="margin: 16px 0">
+        <a-breadcrumb-item>Home</a-breadcrumb-item>
+        <a-breadcrumb-item>List</a-breadcrumb-item>
+        <a-breadcrumb-item>App</a-breadcrumb-item>
+      </a-breadcrumb> -->
+      <div class="padding-height"></div>
+
+      <div :style="{ background: '#fff', padding: '12px', minHeight: '800px' }">
+        <template v-if="selectedKeys.includes('1')">
+          <statistic></statistic>
+        </template>
+        <template v-else-if="selectedKeys.includes('2')">
+        <geo></geo>
+        </template>
+        <template v-else-if="selectedKeys.includes('3')">
+          <div>3</div>
+        </template>
+      </div>
+    </a-layout-content>
+    <a-layout-footer style="text-align: center">
+      Traffic Statistics of England.
+    </a-layout-footer>
   </a-layout>
 </template>
 <script>
-import Statistic from './Statistic.vue';
-import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons-vue';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref } from "vue";
+import Statistic from "./Statistic.vue";
+import Geo from "./Geo.vue";
 export default defineComponent({
   components: {
     Statistic,
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    
+    Geo
   },
-
   setup() {
-    const onCollapse = (collapsed, type) => {
-      console.log(collapsed, type);
-    };
-
-    const onBreakpoint = broken => {
-      console.log(broken);
-    };
-
     return {
-      selectedKeys: ref(['4']),
-      onCollapse,
-      onBreakpoint,
+      selectedKeys: ref(["1"]),
     };
   },
-
 });
 </script>
 <style>
-.main {
-    height: 100vh;
-    width: 100vw;
-}
-#components-layout-demo-responsive .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-
-.site-layout-sub-header-background {
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
   background: #fff;
 }
-
-.site-layout-background {
-  background: #fff;
+.logo {
+  height: auto;
+  float: left;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  font-style: italic;
+  padding-right: 12px;
 }
 
-[data-theme='dark'] .site-layout-sub-header-background {
+[data-theme="dark"] .site-layout-content {
   background: #141414;
+}
+.padding-height {
+  height: 24px;
 }
 </style>

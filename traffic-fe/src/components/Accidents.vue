@@ -1,4 +1,6 @@
+
 <template>
+  <div>Probability of accidents for</div>
   <a-table :columns="columns" 
   :bordered="true"
   :data-source="data" :pagination="false">
@@ -94,3 +96,5 @@ export default defineComponent({
   },
 });
 </script>
+
+
