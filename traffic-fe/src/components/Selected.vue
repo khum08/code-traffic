@@ -1,23 +1,26 @@
 <template>
     <div>
-        <select>
-            <option v-for="item in options">{{item}}</option>
-        </select>
+        <a-select 
+            placeholder="year"
+            v-model:value="defaultYear" label-in-value style="width: 180px" :options="options" @change="handleChange">
+        </a-select>
         <button>OK</button>
     </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            options: [
-                2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
-            ]
-        }
-    },
-    mounted: () => {
-        
+import { defineComponent, ref } from "vue";
+import {mapState} from 'vuex';
+export default defineComponent({
+    computed: mapState({
+        defaultYear: state => state.traffic.defaultYear,
+        options: state => state.traffic.yearList
+    }),
+    setup: () => {},
+    methods: {
+        handleChange(item) {
+            this.$store.dispatch('traffic/selectYear', item.value)
+        },
     }
-}
+});
 </script>

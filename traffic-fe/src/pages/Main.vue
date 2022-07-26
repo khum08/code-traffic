@@ -8,9 +8,9 @@
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">nav 1</a-menu-item>
-        <a-menu-item key="2">nav 2</a-menu-item>
-        <a-menu-item key="3">nav 3</a-menu-item>
+        <a-menu-item key="1">Accidents of Year</a-menu-item>
+        <a-menu-item key="2">All Vehicles</a-menu-item>
+        <a-menu-item key="3">Probability</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 20px">
@@ -26,7 +26,7 @@
           <statistic></statistic>
         </template>
         <template v-else-if="selectedKeys.includes('2')">
-        <geo></geo>
+          <geo></geo>
         </template>
         <template v-else-if="selectedKeys.includes('3')">
           <div>3</div>
@@ -45,13 +45,16 @@ import Geo from "./Geo.vue";
 export default defineComponent({
   components: {
     Statistic,
-    Geo
+    Geo,
   },
   setup() {
     return {
       selectedKeys: ref(["1"]),
     };
   },
+  created() {
+    this.$store.dispatch('traffic/getVehicles')
+  }
 });
 </script>
 <style>
