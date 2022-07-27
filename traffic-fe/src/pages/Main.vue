@@ -26,7 +26,7 @@
           <statistic></statistic>
         </template>
         <template v-else-if="selectedKeys.includes('2')">
-          <geo></geo>
+          <all-traffic></all-traffic>
         </template>
         <template v-else-if="selectedKeys.includes('3')">
           <div>3</div>
@@ -41,11 +41,11 @@
 <script>
 import { defineComponent, ref } from "vue";
 import Statistic from "./Statistic.vue";
-import Geo from "./Geo.vue";
+import AllTraffic from "./AllTraffic.vue";
 export default defineComponent({
   components: {
     Statistic,
-    Geo,
+    AllTraffic,
   },
   setup() {
     return {
@@ -54,6 +54,7 @@ export default defineComponent({
   },
   created() {
     this.$store.dispatch('traffic/initData')
+    this.$store.dispatch('allTraffic/initData')
   }
 });
 </script>

@@ -17,7 +17,7 @@
             :value="record.probability"
             :precision="2"
             suffix="%"
-            :value-style="{ color: '#cf1322' }"
+            :value-style="{ color: '#cf1322', fontSize: '18px' }"
             style="margin-right: 50px"
           >
           </a-statistic>

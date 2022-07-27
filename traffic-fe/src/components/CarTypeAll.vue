@@ -14,19 +14,6 @@
           {{ record.name }}
         </a>
       </template>
-      <template v-else-if="column.key === 'probability'">
-        <a-statistic
-          :value="record.probability"
-          :precision="2"
-          suffix="%"
-          :value-style="{
-            color: record.probability > 0 ? '#3f8600' : '#cf1322',
-            fontSize: '18px'
-          }"
-          style="margin-right: 50px;"
-        >
-        </a-statistic>
-      </template>
     </template>
   </a-table>
 </template>
@@ -50,9 +37,9 @@ export default defineComponent({
 
   computed: {
     ...mapState({
-      columns: state => state.traffic.columns
+      columns: state => state.allTraffic.columns
     }),
-    ...mapGetters('traffic', {
+    ...mapGetters('allTraffic', {
       data: 'carTypeData'
     })
   }

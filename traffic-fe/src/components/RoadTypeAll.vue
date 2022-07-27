@@ -1,36 +1,32 @@
 <template>
-  <a-table
-    :columns="columns"
-    :bordered="true"
-    :data-source="data"
-    :pagination="false"
-    size="small"
+  <a-table 
+  :bordered="true"
+  :columns="columns" :data-source="data" :pagination="false"
+  size="small"
   >
-    <template #headerCell="{ column }"> </template>
-
+    <template #headerCell="{ column }" :fixed="true">
+    </template>
     <template #bodyCell="{ column, record }">
-      <template v-if="column.key === 'CarType'">
+      <template v-if="column.key === 'RoadType'">
         <a>
           {{ record.name }}
         </a>
       </template>
       <template v-else-if="column.key === 'probability'">
         <a-statistic
-          :value="record.probability"
-          :precision="2"
-          suffix="%"
-          :value-style="{
-            color: record.probability > 0 ? '#3f8600' : '#cf1322',
-            fontSize: '18px'
-          }"
-          style="margin-right: 50px;"
-        >
-        </a-statistic>
+            :value="record.probability"
+            :precision="2"
+            suffix="%"
+            :value-style="{ color: '#cf1322' }"
+            style="margin-right: 50px"
+          >
+          </a-statistic>
       </template>
     </template>
   </a-table>
 </template>
 <script>
+
 import {
   SmileOutlined,
   DownOutlined,
@@ -50,10 +46,10 @@ export default defineComponent({
 
   computed: {
     ...mapState({
-      columns: state => state.traffic.columns
+      columns: state => state.allTraffic.roadColumns
     }),
-    ...mapGetters('traffic', {
-      data: 'carTypeData'
+    ...mapGetters('allTraffic', {
+      data: 'roadTypeData'
     })
   }
 });
