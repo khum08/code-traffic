@@ -53,7 +53,7 @@ export default defineComponent({
     };
   },
   created() {
-    this.$store.dispatch('traffic/getVehicles')
+    this.$store.dispatch('traffic/initData')
   }
 });
 </script>

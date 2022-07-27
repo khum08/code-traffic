@@ -1,8 +1,10 @@
 <template>
   <a-table 
   :bordered="true"
-  :columns="columns" :data-source="data" :pagination="false">
-    <template #headerCell="{ column }">
+  :columns="columns" :data-source="data" :pagination="false"
+  size="small"
+  >
+    <template #headerCell="{ column }" :fixed="true">
     </template>
     <template #bodyCell="{ column, record }">
       <template v-if="column.key === 'RoadType'">
@@ -15,53 +17,25 @@
             :value="record.probability"
             :precision="2"
             suffix="%"
-            :value-style="{ color: record.probability > 0 ? '#3f8600': '#cf1322' }"
+            :value-style="{ color: '#cf1322' }"
             style="margin-right: 50px"
           >
-            <template #prefix v-if="record.probability>0">
-              <arrow-up-outlined />
-            </template>
-            <template #prefix v-else-if="record.probability<=0">
-              <arrow-down-outlined />
-            </template>
           </a-statistic>
       </template>
     </template>
   </a-table>
 </template>
 <script>
-import { SmileOutlined, DownOutlined, ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons-vue";
-import { defineComponent } from "vue";
-const columns = [
-  {
-    title: "RoadType",
-    dataIndex: "name",
-    key: "RoadType",
-  },
-  {
-    title: "Probability",
-    dataIndex: "probability",
-    key: "probability",
-  },
-];
 
-const data = [
-  {
-    key: "1",
-    name: "Motorways",
-    probability: "-25.3",
-  },
-  {
-    key: "2",
-    name: "'A'Roads",
-    probability: "-23.2",
-  },
-  {
-    key: "3",
-    name: "Minor Roads",
-    probability: "-17.2",
-  },
-];
+import {
+  SmileOutlined,
+  DownOutlined,
+  ArrowUpOutlined,
+  ArrowDownOutlined,
+} from "@ant-design/icons-vue";
+import { defineComponent } from "vue";
+import { mapState, mapGetters } from "vuex";
+
 export default defineComponent({
   components: {
     SmileOutlined,
@@ -70,11 +44,13 @@ export default defineComponent({
     ArrowDownOutlined,
   },
 
-  setup() {
-    return {
-      data,
-      columns,
-    };
-  },
+  computed: {
+    ...mapState({
+      columns: state => state.traffic.roadColumns
+    }),
+    ...mapGetters('traffic', {
+      data: 'roadTypeData'
+    })
+  }
 });
 </script>

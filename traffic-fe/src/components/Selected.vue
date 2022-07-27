@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div style="margin-bottom: 10px;">
+        <span class="label">Select Year:</span>
         <a-select 
             placeholder="year"
-            v-model:value="defaultYear" label-in-value style="width: 180px" :options="options" @change="handleChange">
+            v-model:value="selectedYear" label-in-value style="width: 180px" :options="options" @change="handleChange">
         </a-select>
-        <button>OK</button>
     </div>
 </template>
 
@@ -13,7 +13,7 @@ import { defineComponent, ref } from "vue";
 import {mapState} from 'vuex';
 export default defineComponent({
     computed: mapState({
-        defaultYear: state => state.traffic.defaultYear,
+        selectedYear: state => state.traffic.selectedYear,
         options: state => state.traffic.yearList
     }),
     setup: () => {},
@@ -24,3 +24,9 @@ export default defineComponent({
     }
 });
 </script>
+
+<style scoped>
+.label {
+    padding: 8px;
+}
+</style>

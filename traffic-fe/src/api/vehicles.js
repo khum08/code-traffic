@@ -393,7 +393,7 @@ const type_of_vehicle = {
 
 
 export default {
-  async getVehicles() {
+  getVehicles() {
     // await wait(100);
     return vehicles;
   },

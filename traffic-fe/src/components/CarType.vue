@@ -4,6 +4,7 @@
     :bordered="true"
     :data-source="data"
     :pagination="false"
+    size="small"
   >
     <template #headerCell="{ column }"> </template>
 
@@ -23,12 +24,6 @@
           }"
           style="margin-right: 50px"
         >
-          <template #prefix v-if="record.probability > 0">
-            <arrow-up-outlined />
-          </template>
-          <template #prefix v-else-if="record.probability <= 0">
-            <arrow-down-outlined />
-          </template>
         </a-statistic>
       </template>
     </template>
