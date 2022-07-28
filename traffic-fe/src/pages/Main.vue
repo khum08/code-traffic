@@ -29,7 +29,7 @@
           <all-traffic></all-traffic>
         </template>
         <template v-else-if="selectedKeys.includes('3')">
-          <div>3</div>
+          <probability></probability>
         </template>
       </div>
     </a-layout-content>
@@ -42,10 +42,13 @@
 import { defineComponent, ref } from "vue";
 import Statistic from "./Statistic.vue";
 import AllTraffic from "./AllTraffic.vue";
+import Probability from './Prob.vue';
+
 export default defineComponent({
   components: {
     Statistic,
     AllTraffic,
+    Probability
   },
   setup() {
     return {
