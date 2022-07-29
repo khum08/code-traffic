@@ -3,10 +3,16 @@
         <selected></selected>
         <div class="content">
             <div class="left">
-                <car-type-all></car-type-all>
+                <prob-table
+                    :columns="carColumns"
+                    :data="carData"
+                ></prob-table>
             </div>
             <div class="right">
-                <road-type-all></road-type-all>
+                <prob-table
+                    :columns="roadColumns"
+                    :data="roadData"
+                ></prob-table>
             </div>
         </div>
 
@@ -15,17 +21,32 @@
 
 <script>
 import Selected from '../components/Selected.vue';
-import CarTypeAll from '../components/CarTypeAll.vue';
-import RoadTypeAll from '../components/RoadTypeAll.vue';
 import { defineComponent } from 'vue';
+import ProbTable from '../components/ProbTable.vue';
+import { mapState, mapGetters } from "vuex";
 
 export default defineComponent({
     components: {
-        Selected, CarTypeAll, RoadTypeAll
+        Selected, ProbTable
     },
     setup() {
         return {};
-    }
+    },
+
+    computed: {
+        ...mapState({
+            carColumns: state => state.prob.carColumns,
+            roadColumns: state => state.prob.roadColumns
+        }),
+        ...mapGetters('prob', {
+            carData: 'carData',
+            roadData: 'roadData'
+        })
+    },
+
+    created() {
+        this.$store.dispatch('prob/initData');
+    },
 })
 
 </script>

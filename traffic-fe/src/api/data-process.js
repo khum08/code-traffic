@@ -1295,7 +1295,7 @@ function roadType() {
         let molecularA = roads[year]['Accident_Index']['2'] + roads[year]['Accident_Index']['3'];
         let denominatorA = roadsAll.filter(item => item['AADFYear'] + '' === year && item['Road_short'] === 'A')[0]['all'];
         console.log(year, 'A', molecularA, denominatorA);
-        item['A'] = [molecularA, molecularA];
+        item['A'] = [molecularA, denominatorA];
 
         let molecularB = roads[year]['Accident_Index']['4'];
         let denominatorB = roadsAll.filter(item => item['AADFYear']+ '' === year && item['Road_short'] === 'B')[0]['all'];

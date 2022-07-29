@@ -57,7 +57,7 @@ const getters = {
                 key: key + '',
                 name: state.typeOfVehicle[key],
                 number: numberData[key],
-                probability: objData[key]
+                probability: objData[key] * 100
             }
         });
         return data;
