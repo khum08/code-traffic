@@ -8,7 +8,7 @@ const state = () => ({
     selectedYear: 0,
     columns: [
         {
-          title: "CarType",
+          title: "Car Type",
           dataIndex: "name",
           key: "CarType",
         },
@@ -27,7 +27,7 @@ const state = () => ({
     typeOfRoad: {},
     roadColumns: [
         {
-            title: "RoadType",
+            title: "Road Type",
             dataIndex: "name",
             key: "RoadType",
           },
@@ -55,7 +55,7 @@ const getters = {
         const data = Object.keys(objData).map(key => {
             return {
                 key: key + '',
-                name: state.typeOfVehicle[key],
+                name: state.typeOfVehicle[key] || '[Not used]',
                 number: numberData[key],
                 probability: objData[key] * 100
             }

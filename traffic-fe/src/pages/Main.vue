@@ -1,7 +1,7 @@
 <template>
   <a-layout class="layout">
     <a-layout-header>
-      <span class="logo">Traffic Statistics</span>
+      <span class="logo" @click="goHome()">Traffic Accident Platform</span>
       <a-menu
         v-model:selectedKeys="selectedKeys"
         theme="dark"
@@ -39,7 +39,7 @@
   </a-layout>
 </template>
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent} from "vue";
 import Statistic from "./Statistic.vue";
 import AllTraffic from "./AllTraffic.vue";
 import Probability from './Prob.vue';
@@ -50,18 +50,23 @@ export default defineComponent({
     AllTraffic,
     Probability
   },
-  setup() {
+  data() {
     return {
-      selectedKeys: ref(["1"]),
-    };
+      selectedKeys: [this.$route.params.type || '1']
+    }
   },
   created() {
     this.$store.dispatch('traffic/initData')
     this.$store.dispatch('allTraffic/initData')
+  },
+  methods: {
+    goHome: function() {
+      this.$router.push('/')
+    }
   }
 });
 </script>
-<style>
+<style lang="less">
 .site-layout-content {
   min-height: 280px;
   padding: 24px;
@@ -72,9 +77,13 @@ export default defineComponent({
   float: left;
   color: white;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 26px;
   font-style: italic;
   padding-right: 12px;
+  &:hover {
+    cursor: pointer;
+    color: rgb(196, 197, 196);
+  }
 }
 
 [data-theme="dark"] .site-layout-content {

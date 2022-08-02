@@ -15,7 +15,7 @@
           :precision="6"
           suffix="%"
           :value-style="{
-            color: '#cf1322',
+            color: record.number > 0.1 ? '#cf1322' : '#3f8600',
             fontSize: '18px'
           }"
           style="margin-right: 50px;"

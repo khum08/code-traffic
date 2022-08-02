@@ -20,7 +20,7 @@
           :precision="2"
           suffix="%"
           :value-style="{
-            color: record.probability > 0 ? '#3f8600' : '#cf1322',
+            color: record.probability > 10 ? '#cf1322' : '#3f8600',
             fontSize: '18px'
           }"
           style="margin-right: 50px;"

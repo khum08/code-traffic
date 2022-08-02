@@ -14,10 +14,12 @@
       </template>
       <template v-else-if="column.key === 'probability'">
         <a-statistic
-            :value="record.probability"
+            :value="record.probability * 100"
             :precision="2"
             suffix="%"
-            :value-style="{ color: '#cf1322', fontSize: '18px' }"
+            :value-style="{
+              color: record.probability > 0.1 ? '#cf1322' : '#3f8600',
+              fontSize: '18px' }"
             style="margin-right: 50px"
           >
           </a-statistic>
