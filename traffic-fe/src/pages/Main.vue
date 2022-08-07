@@ -11,14 +11,10 @@
         <a-menu-item key="1">Accidents of Year</a-menu-item>
         <a-menu-item key="2">All Vehicles</a-menu-item>
         <a-menu-item key="3">Probability</a-menu-item>
+        <a-menu-item key="4">Map</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 20px">
-      <!-- <a-breadcrumb style="margin: 16px 0">
-        <a-breadcrumb-item>Home</a-breadcrumb-item>
-        <a-breadcrumb-item>List</a-breadcrumb-item>
-        <a-breadcrumb-item>App</a-breadcrumb-item>
-      </a-breadcrumb> -->
       <div class="padding-height"></div>
 
       <div :style="{ background: '#fff', padding: '12px', minHeight: '800px' }">
@@ -30,6 +26,9 @@
         </template>
         <template v-else-if="selectedKeys.includes('3')">
           <probability></probability>
+        </template>
+        <template v-else-if="selectedKeys.includes('4')">
+          <png-map></png-map>
         </template>
       </div>
     </a-layout-content>
@@ -43,12 +42,14 @@ import { defineComponent} from "vue";
 import Statistic from "./Statistic.vue";
 import AllTraffic from "./AllTraffic.vue";
 import Probability from './Prob.vue';
+import PngMap from './Map.vue';
 
 export default defineComponent({
   components: {
     Statistic,
     AllTraffic,
-    Probability
+    Probability,
+    PngMap
   },
   data() {
     return {

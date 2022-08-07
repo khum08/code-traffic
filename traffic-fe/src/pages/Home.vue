@@ -12,6 +12,7 @@
         <button class="entry-btn" @click="goMain(1)">Accident of year</button>
         <button class="entry-btn"  @click="goMain(2)">All vehicles</button>
         <button class="entry-btn"  @click="goMain(3)">Probability</button>
+        <button class="entry-btn"  @click="goMain(4)">Map</button>
       </div>
     </div>
   </div>

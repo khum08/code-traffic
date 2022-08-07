@@ -5,7 +5,7 @@ const state = () => ({
     allVehicles: {},
     columns: [
         {
-          title: "CarType",
+          title: "Car Type",
           dataIndex: "name",
           key: "CarType",
         },
@@ -15,10 +15,11 @@ const state = () => ({
             key: "number"
         },
     ],
+    car: {},
     roadsList: {},
     roadColumns: [
         {
-            title: "RoadType",
+            title: "Road Type",
             dataIndex: "name",
             key: "RoadType",
         },
@@ -39,7 +40,7 @@ const getters = {
         const data = Object.keys(cur).map(key => {
             return {
                 key: key + '',
-                name: key,
+                name: state.car[key],
                 number: cur[key]
             }
         });
@@ -67,6 +68,9 @@ const actions = {
     getAllVehicles({commit}) {
         const vehicles = allVehiclesApi.getVehicles();
         commit('setVehicles', vehicles);
+
+        const car = allVehiclesApi.getTypeOfCar();
+        commit('setRoads', car);
     },
 
     getAllRoadsData({commit}) {
@@ -82,6 +86,10 @@ const actions = {
 const mutations = {
     setVehicles(state, allVehicles) {
         state.allVehicles = allVehicles;
+    },
+
+    setRoads(state, car) {
+        state.car = car;
     },
 
     setTypeOfVehicle(state, type) {

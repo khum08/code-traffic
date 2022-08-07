@@ -137,9 +137,21 @@ const allVehicles ={
     }
 }
 
+const typeOfCar = {
+    "FdPC": 'Cycle',
+    "Fd2WMV": 'Two wheeled motor vehicles',
+    "FdCar": 'Car',
+    "FdBUS": 'Bus',
+    "FdLGV": 'light goods vehicle',
+    "FdHGV": 'heavy goods vehicle'
+}
 
 export default {
     getVehicles() {
-      return allVehicles;
+        return allVehicles;
     },
+
+    getTypeOfCar() {
+        return typeOfCar;
+    }
 }
